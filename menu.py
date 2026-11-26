@@ -14,7 +14,7 @@ def menu_admin():
             ("Kelola Tukang", 1),
             ("Kelola Paket", 2),
             ("Total Pendapatan", 3),
-            ("lihat_pengguna", 4),
+            ("Lihat Pengguna", 4),
             ("Tandai Selesai", 5),
             ("Status Pembayaran", 6),
             ("Logout", 0),
