@@ -59,15 +59,16 @@ def buat_pesanan(user_login):
         for t in dipakai:
             t["status"] = "Sibuk"
         total = hitung_total(pilihan, ukuran)
-        orders.append(
-            {"no_pesanan": no_baru, 
-            "username": user_login["username"], 
-            "paket": pilihan["nama"], 
-            "lokasi": lokasi, 
-            "nama_tukang": [t["nama"] for t in dipakai], 
-            "total": total, 
-            "status": "Diproses"}
-            )
+        orders.append({
+            "no_pesanan": no_baru,
+            "username": user_login["username"],
+            "paket": pilihan["nama"],
+            "lokasi": lokasi,
+            "nama_tukang": [t["nama"] for t in dipakai],
+            "total": total,
+            "pembayaran": "Belum bayar",
+            "status": "Diproses",
+        })
         pilihan["stok"] = False
         for t in tukang_siap:
             t["status"] = "Sibuk"
@@ -94,7 +95,7 @@ def pembayaran(user_login):
     clear_screen()
     print("---( PEMBAYARAN )---")
     print()
-    belum = [o for  o in pesanan_milik(user_login) if o["pembayaran"] == "Belum bayar"] 
+    belum = [o for  o in orders if o["pembayaran"] == "Belum bayar"] 
     if len(belum) == 0:
         print("Nggak ada pesanan yang perlu dibayar.")
     else:
@@ -121,9 +122,9 @@ def hapus_lokasi(user_login):
     clear_screen()
     print("---( HAPUS LOKASI PESANAN )---")
     print()
-    bisa = [o for o in pesanan_milik(user_login) if o["status"] == "Diproses" and o["pembayaran"] == "Belum bayar"]
+    bisa = [o for o in orders if o["status"] == "Diproses" and o["pembayaran"] == "Belum bayar"]
     if len(bisa) == 0:
-        print("Tidak ada pesanan yang bisa dihapus (harus belum dibayar).")
+        print("Tidak ada lokasi yang bisa dihapus (harus belum dibayar).")
     else:
         tampil_pesanan(bisa)
         print()
