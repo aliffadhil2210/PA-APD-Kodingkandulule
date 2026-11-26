@@ -80,6 +80,9 @@ def buat_pesanan(user_login):
 
 def lihat_status(user_login):
     clear_screen()
+    print("---( STATUS PESANAN )---")
+    print()
+    clear_screen()
     tabel = PrettyTable(["Nomor", "Paket", "Status"])
     for p in orders:
         if p["username"] == user_login["username"]:
@@ -91,7 +94,7 @@ def pembayaran(user_login):
     clear_screen()
     print("---( PEMBAYARAN )---")
     print()
-    belum = [o for o in pesanan_milik(user_login) if o["pembayaran"] == "Belum bayar"]
+    belum = [o for  o in pesanan_milik(user_login) if o["pembayaran"] == "Belum bayar"] 
     if len(belum) == 0:
         print("Nggak ada pesanan yang perlu dibayar.")
     else:

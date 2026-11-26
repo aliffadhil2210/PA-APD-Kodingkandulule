@@ -108,6 +108,8 @@ def kelola_tukang():
 
 def lihat_tukang():
     clear_screen()
+    print("---( LIHAT TUKANG )---")
+    print()
     tabel = PrettyTable()
     tabel.field_names = ["No", "Nama", "Status"]
     for i in range(len(tukang)):

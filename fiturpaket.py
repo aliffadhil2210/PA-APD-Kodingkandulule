@@ -36,7 +36,7 @@ def kelola_paket():
             else:
                 harga = minta_angka("Harga per m2 : ", 1, MAKS_HARGA)
                 fitur = minta_teks("Fitur")
-                butuh = minta_angka("Jumlah tukang yang dibutuhkan : ", 1 )
+                butuh = minta_angka("Jumlah tukang yang dibutuhkan : ", 1, 5)
                 paket.append({"nama": nama, "harga": harga, "fitur": fitur, "membutuhkan": f"{butuh} tukang", "sedia": True})
                 print("Paketnya udah ditambah!")
             enter()
@@ -57,7 +57,7 @@ def kelola_paket():
             else:
                 harga = minta_angka("Harga baru per m2 : ", 1, MAKS_HARGA)
                 fitur = minta_teks("Fitur baru")
-                butuh = minta_angka("Jumlah tukang yang dibutuhkan : ", 1 )
+                butuh = minta_angka("Jumlah tukang yang dibutuhkan : ", 1, 5)
                 paket[idx]["nama"] = nama
                 paket[idx]["harga"] = harga
                 paket[idx]["fitur"] = fitur
